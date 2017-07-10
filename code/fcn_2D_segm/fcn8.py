@@ -39,7 +39,7 @@ def freezeParameters(net, single=True):
 # start-snippet-1
 def buildFCN8(nb_in_channels, input_var,
               path_weights='/Tmp/romerosa/itinf/models/' +
-              'camvid/new_fcn8_model_best.npz',
+                                'camvid/new_fcn8_model_best.npz',
               n_classes=21, load_weights=True,
               void_labels=[], trainable=False,
               layer=['probs_dimshuffle'], pascal=False,
@@ -54,7 +54,7 @@ def buildFCN8(nb_in_channels, input_var,
     net['input'] = InputLayer((None, nb_in_channels, None, None),input_var)
 
     # pool 1
-    net['conv1_1'] = ConvLayer(net['input'], 64, 3, pad=100, flip_filters=False)
+    net['conv1_1'] = ConvLayer(net['input'], 64, 3, pad=100, flip_filters=False)  #pourquoi un padding de 100? Les données sont de taille variable, le padding devrait l'être aussi, et 100 semble excessif. Explication pourrait être intéressante si raison
     net['conv1_2'] = ConvLayer(net['conv1_1'], 64, 3, pad='same', flip_filters=False)
     net['pool1'] = PoolLayer(net['conv1_2'], 2)
 

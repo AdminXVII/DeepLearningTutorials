@@ -4,7 +4,7 @@ Fully Convolutional Networks (FCN) for 2D segmentation
 ******************************************************
 
 .. note::
-    This section assumes the reader has already read through :doc:`lenet` for 
+    This section assumes the reader has already read through :doc:`lenet` for
     convolutional networks motivation.
 
 Summary
@@ -20,7 +20,7 @@ not only *what* is in the input, but also *where*.
     :align: center
     :scale: 35%
 
-    **Figure 1** : Segmentation network (from FCN paper)
+    **Figure 1** : Segmentation network (from Long, Shelhamer and Darrell's FCN paper)
 
 **Fully Convolutional Networks** (FCNs) owe their name to their architecture, which is
 built only from locally connected layers, such as convolution, pooling and upsampling.
@@ -32,6 +32,17 @@ networks usually have 2 parts :
 
 *  Downsampling path : capture semantic/contextual information
 *  Upsampling path : recover spatial information
+
+.. Il serait intéressant d'inclure une visualisation des étages de down/Upsampling
+    i.e.
+    [ ]         [ ]
+    [ ][ ]      [ ]
+    [ ][ ][ ][ ][ ]
+    [ ][ ]      [ ]
+    [ ]         [ ]
+
+    |__________||_|
+        Down    Up
 
 The **downsampling path** is used to extract and interpret the context (*what*), while the
 **upsampling path** is used to enable precise localization (*where*). Furthermore, to fully
@@ -57,8 +68,8 @@ There is a total of 912 images taken from 36 patients.
 Each pixel is labelled between 2 classes : polype or background.
 The size of the images vary. We use data augmentation for training, as specified
 in the defaults arguments in the code given below. Note that
-the data augmentation is necessary for training with batch size greater than 1 
-in order to have same image size with a random cropping. If no random cropping, 
+the data augmentation is necessary for training with batch size greater than 1
+in order to have same image size with a random cropping. If no random cropping,
 the batch size for the training set must be set to 1, like for validation and test
 sets (where there is no data augmentation).
 
@@ -83,7 +94,7 @@ explicitely show the relative size of the feature maps.
     :align: center
     :scale: 50%
 
-    **Figure 2** : FCN architecture (from FCN paper)
+    **Figure 2** : FCN architecture (from Long, Shelhamer and Darrell's FCN paper)
 
 **Difference between the 3 FCN variants**
 
@@ -93,6 +104,7 @@ and the skip connections used to obtain the output segmentation maps. We will us
 *upsampling path* to refer to the network composed of all layers after *conv7*. It is worth
 noting that the 3 FCN architectures share the same downsampling path, but differ in their
 respective upsampling paths.
+.. Comme l'image montre une intersection dans ce qui a été défini comme le 'downsampling path', l'image semble infirmer le texte.
 
 
 1. **FCN-32** : Directly produces the segmentation map from *conv7*, by using a
@@ -113,7 +125,7 @@ feature maps to obtain the segmentation map.
     :align: center
     :scale: 65%
 
-    **Figure 3** : FCN architecture (from FCN paper)
+    **Figure 3** : FCN architecture (from FCN paper) .. L'image n'apparaît pas dans aucun des articles mentionnés
 
 As explained above, the upsampling paths of the FCN variants are different, since they
 use different skip connection layers and strides for the last convolution, yielding
@@ -125,7 +137,7 @@ contextual information.
     :align: center
     :scale: 30%
 
-    **Figure 4** : FCN results (from FCN paper)
+    **Figure 4** : FCN results (from Long, Shelhamer and Darrell's FCN paper)
 
 Note that the FCN-8 architecture was used on the polyps dataset below,
 since it produces more precise segmentation maps.
@@ -214,5 +226,3 @@ Papers related to Theano/Lasagne:
 
 
 Thank you!
-
-

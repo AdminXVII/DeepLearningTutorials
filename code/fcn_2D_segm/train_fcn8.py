@@ -20,6 +20,8 @@ from fcn8 import buildFCN8
 _FLOATX = config.floatX
 _EPSILON = 10e-7
 
+#Si c'est un code libre, la documentation devrait être un peu plus fournie, i.e. qu'est ce qu'epsilon, les variables sont interchangeable à travers le monde, surtout en informatique
+
 
 def jaccard_metric(y_pred, y_true, n_classes, one_hot=False):
 
