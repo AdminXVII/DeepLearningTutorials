@@ -44,6 +44,8 @@ networks usually have 2 parts :
     |__________||_|
         Down    Up
 
+    Si vous le voulez, j'ai fait un prototype de l'image.
+
 The **downsampling path** is used to extract and interpret the context (*what*), while the
 **upsampling path** is used to enable precise localization (*where*). Furthermore, to fully
 recover the fine-grained spatial information lost in the pooling or downsampling layers, we
@@ -125,7 +127,9 @@ feature maps to obtain the segmentation map.
     :align: center
     :scale: 65%
 
-    **Figure 3** : FCN architecture (from FCN paper) .. L'image n'apparaît pas dans aucun des articles mentionnés
+    **Figure 3** : FCN architecture (from FCN paper)
+
+.. L'image n'apparaît pas dans aucun des articles mentionnés
 
 As explained above, the upsampling paths of the FCN variants are different, since they
 use different skip connection layers and strides for the last convolution, yielding
@@ -154,7 +158,7 @@ per pixel.
 .. math::
    :label: jaccard
 
-    acc(P, GT) = \frac{|\text{pixels correctly predicted}|}{|\text{total nb of pixels}|}
+    acc(P, GT) = \frac{|\text{pixels correctly predicted}|}{|\text{total nb of pixels}|} .. Pourquoi abs()? Le nombre de pixel n'est il pas tjrs naturel?
 
 
 **Jaccard (Intersection over Union)**
@@ -169,7 +173,7 @@ also for that given class.
 .. math::
    :label: jaccard_equation
 
-    jacc(P(class), GT(class)) = \frac{|P(class)\cap GT(class)|}{|P(class)\cup GT(class)|}
+    jacc(P(class), GT(class)) = \frac{|P(class)\cap GT(class)|}{|P(class)\cup GT(class)|} .. Pourquoi abs()? une probabilité est tjrs entre 0 et 1. Mentionner que si l'union est de 0, le résultat est indéfini pourrait être intéressant.
 
 where `P` is the predicted segmentation map and `GT` is the ground
 truth segmentation map. `P(class)` is then the binary mask indicating if each
